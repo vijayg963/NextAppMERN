@@ -19,7 +19,8 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["./app/components/*"]
     }
   },
   "include": [
@@ -27,8 +28,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/about/id/[...id].tsx",
-    "app/user/mongodb.js"
+    "app/about/[...id].tsx",
+    "app/api/mongodb.js"
   ],
   "exclude": ["node_modules"]
 }
