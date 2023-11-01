@@ -1,15 +1,16 @@
-import { connectToDataBase } from './mongodb';
+import { connectToDataBase } from "../mongodb";
+const limit = 5;
 
 export async function GET() {
-  const { db }: any = await connectToDataBase();
-  const getAllData = await db.collection('listingsAndReviews');
-  const data = await getAllData.find({}).toArray();
-  return Response.json({ message: 'success', data: data });
+  const { db }: any = await connectToDataBase("sample_airbnb");
+  const getAllData = await db.collection("listingsAndReviews");
+  const data = await getAllData.find({}).limit(limit).toArray();
+  return Response.json({ message: "success", data: data });
 }
 
 export async function POST() {
   let res = {
-    body: { Name: 'Vijay', lastName: 'gupta', time: new Date().toISOString() },
+    body: { Name: "Vijay", lastName: "gupta", time: new Date().toISOString() },
   };
   const data = await res;
   return Response.json(data);
