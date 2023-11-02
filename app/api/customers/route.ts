@@ -1,10 +1,15 @@
+import type { NextApiRequest, NextApiResponse } from "next";
 import { connectToDataBase } from "../mongodb";
-import { NextResponse } from "next/server";
 
-export async function GET() {
+const limit = 5;
+
+export async function GET(req: NextApiRequest, res: NextApiResponse) {
   const { db } = await connectToDataBase("sample_analytics");
   const customers = await db.collection("customers");
-  const data = await customers.find({}).limit(5).toArray();
-  console.log("customers", data);
-  return NextResponse.json({ message: "success", data: data });
+  try {
+    const data = await customers.find({}).limit(limit).toArray();
+    return Response.json({ message: "success", data: data });
+  } catch (err) {
+    Response.json({ error: "failed to load data" });
+  }
 }
