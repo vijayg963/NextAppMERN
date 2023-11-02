@@ -1,15 +1,18 @@
 import React from "react";
-
 interface prop {
   children?: React.ReactNode;
   type?: any;
   text?: any;
-  onClick?: () => void;
+  handleClick?: () => void;
 }
 
-const Button = ({ children, type, text, onClick }: prop) => {
+const Button = ({ children, type, text, handleClick }: prop) => {
   return (
-    <button type={type} onClick={onClick}>
+    <button
+      className={` text-white shadow-slate-100 fill-white m-4 px-4 py-2 rounded-md bg-slate-500`}
+      type={type}
+      onClick={handleClick}
+    >
       {text}
       {children}
     </button>

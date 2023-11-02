@@ -1,12 +1,19 @@
+import Link from "next/link";
 import React from "react";
+import Styles from "./style.module.css";
 
 const Customer = ({ customer }) => {
+  const { _id, username, name, address, email } = customer;
   return (
     <div className="card">
-      <h2>ID : {customer._id}</h2>
-      <h3>User Name :- {customer.username}</h3>
-      <h3>Name :- {customer.name}</h3>
-      <h3>Address :- {customer.address}</h3>
+      <h2>ID : {_id}</h2>
+      <h3>User Name :- {username}</h3>
+      <p>
+        Email :-
+        <Link href={email}>{email}</Link>
+      </p>
+      <h3>Name :- {name}</h3>
+      <address>Address :- {address}</address>
     </div>
   );
 };

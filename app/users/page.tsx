@@ -13,13 +13,13 @@ async function Customers() {
   const { data } = await getCustomers();
   return (
     <main>
-      <Button>
-        <Link href={"/dashboard"}>Go to Dashborard</Link>
-      </Button>
+      <Link href={"/"}>
+        <Button>Go to home</Button>
+      </Link>
 
       <div className="cards">
-        {data?.map((customer: any) => (
-          <Customer customer={customer} />
+        {data?.map((customer: any, i: number) => (
+          <Customer key={i} customer={customer} />
         ))}
       </div>
     </main>
